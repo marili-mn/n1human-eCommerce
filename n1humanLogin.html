@@ -14,18 +14,20 @@
                 <i class="fa fa-lock fa-stack-1x"></i>
             </span>
         </p>
-        <input type="email" class="login-username" autofocus="true" required="true" placeholder="Email" id="email" />
-        <input type="password" class="login-password" required="true" placeholder="Password" id="password" />
-        <button type="button" class="login-submit">Login</button>
+        <label for="email" class="visually-hidden">Email</label>
+        <input type="email" class="login-username" autofocus required placeholder="Email" id="email" />
+        
+        <label for="password" class="visually-hidden">Password</label>
+        <input type="password" class="login-password" required placeholder="Password" id="password" />
+        
+        <button type="submit" class="login-submit">Login</button>
     </form>
-    <a href="#" class="login-forgot-pass">forgot password?</a>
+    <a href="#" class="login-forgot-pass">Forgot password?</a>
     <div class="underlay-photo"></div>
     <div class="underlay-black"></div>
+</html>
+
     
-    <div class="api-container">
-        <h2>Tendencias de Moda</h2>
-        <div id="fashion-trends"></div>
-    </div>
     
     <script>
       document.querySelector('.login-submit').addEventListener('click', async function(event) {
@@ -41,8 +43,9 @@
               await fetchFashionTrends(authHeaders);
           }
       });
+  </script>
 
-      async function getAuthenticationHeaders() {
+  <!--        async function getAuthenticationHeaders() {
           const publicKey = 'tu_clave_publica';
           const secretKey = 'tu_clave_secreta';
           const time = Math.floor(Date.now() / 1000);
@@ -54,7 +57,7 @@
               'Content-Type': 'application/json',
               Accept: 'application/json',
           };
-      }
+      }  >
 
       async function pbkdf2(publicKey, secretKey, time, iterations, keyLength, digest) {
           // Implementa aquí tu función pbkdf2 para generar la clave derivada
@@ -81,7 +84,6 @@
           } else {
               alert('Error al obtener tendencias de moda');
           }
-      }
-  </script>
+      }-->
 </body>
 </html>

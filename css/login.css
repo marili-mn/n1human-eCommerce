@@ -1,15 +1,20 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700);
-@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700');
+@import url('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
 
 body, html {
     height: 100%;
+    margin: 0;
 }
+
 body {
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
     font-weight: 100;
     display: flex;
-    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0; /* Fondo neutro para la página */
 }
+
 input {
     ::-webkit-input-placeholder {
         color: rgba(255, 255, 255, 0.7);
@@ -20,8 +25,11 @@ input {
     :-ms-input-placeholder {
         color: rgba(255, 255, 255, 0.7);
     }
+    ::placeholder {
+        color: rgba(255, 255, 255, 0.7); /* Placeholder para todos los navegadores */
+    }
     &:focus {
-        outline: 0 transparent solid;
+        outline: none;
         ::-webkit-input-placeholder {
             color: rgba(0, 0, 0, 0.7);
         }
@@ -31,6 +39,9 @@ input {
         :-ms-input-placeholder {
             color: rgba(0, 0, 0, 0.7);
         }
+        ::placeholder {
+            color: rgba(0, 0, 0, 0.7); /* Placeholder al enfocar */
+        }
     }
 }
 
@@ -38,8 +49,14 @@ input {
     min-height: 10rem;
     margin: auto;
     max-width: 50%;
-    padding: .5rem;
+    padding: 1rem; /* Aumentado el padding para un mejor espaciado */
+    background: white; /* Fondo blanco para el formulario */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+    position: relative;
+    z-index: 1;
 }
+
 .login-text {
     color: white;
     font-size: 1.5rem;
@@ -54,51 +71,61 @@ input {
 
 .login-username, .login-password {
     background: transparent;
-    border: 0 solid;
-    border-bottom: 1px solid rgba(white, .5);
-    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.5); /* Borde negro */
+    color: black;
     display: block;
-    margin: 1rem;
+    margin: 1rem 0; /* Ajustado el margen para una separación uniforme */
     padding: .5rem;
-    transition: 250ms background ease-in;
-    width: calc(100% - 3rem);
-    &:focus {
-        background: white;
-        color: black;
-        transition: 250ms background ease-in;
-    }
+    transition: background 250ms ease-in, border-color 250ms ease-in;
+    width: calc(100% - 2rem); /* Ajustado el ancho para incluir el padding */
+    font-size: 1rem;
+}
+
+.login-username:focus,
+.login-password:focus {
+    background: rgba(255, 255, 255, 0.9); /* Fondo ligeramente blanco al enfocar */
+    border-color: black; /* Borde negro más visible */
+    color: black; /* Texto negro al enfocar */
 }
 
 .login-forgot-pass {
-    bottom: 0;
     color: white;
     cursor: pointer;
     display: block;
-    font-size: 75%;
-    left: 0;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
     opacity: 0.6;
     padding: .5rem;
-    position: absolute;
     text-align: center;
     width: 100%;
-    &:hover {
-        opacity: 1;
-    }
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: opacity 0.3s ease;
 }
+
+.login-forgot-pass:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
 .login-submit {
-    border: 1px solid white;
-    background: transparent;
+    border: 1px solid black; /* Borde negro */
+    background: #333; /* Color de fondo oscuro para el botón */
     color: white;
     display: block;
     margin: 1rem auto;
-    min-width: 1px;
-    padding: .25rem;
-    transition: 250ms background ease-in;
-    &:hover, &:focus {
-        background: white;
-        color: black;
-        transition: 250ms background ease-in;
-    }
+    padding: .5rem;
+    border-radius: 4px; /* Bordes redondeados */
+    transition: background 250ms ease-in, color 250ms ease-in;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.login-submit:hover,
+.login-submit:focus {
+    background: #555; /* Color más claro al pasar el ratón o enfocar */
+    color: white;
 }
 
 [class*=underlay] {
@@ -107,17 +134,18 @@ input {
     min-width: 100%;
     position: fixed;
     top: 0;
+    z-index: -1;
 }
+
 .underlay-photo {
     animation: hue-rotate 6s infinite;
-    background: url('https://31.media.tumblr.com/41c01e3f366d61793e5a3df70e46b462/tumblr_n4vc8sDHsd1st5lhmo1_1280.jpg');
+    background: url('https://31.media.tumblr.com/41c01e3f366d61793e5a3df70e46b462/tumblr_n4vc8sDHsd1st5lhmo1_1280.jpg') no-repeat center center;
     background-size: cover;
     -webkit-filter: grayscale(30%);
-    z-index: -1;
 }
+
 .underlay-black {
     background: rgba(0, 0, 0, 0.7);
-    z-index: -1;
 }
 
 @keyframes hue-rotate {
